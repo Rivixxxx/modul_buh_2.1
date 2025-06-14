@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструкция для нового сотрудника: Ведение банковских операций</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #2563eb;
+            font-size: 2rem;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 10px;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            color: #2563eb;
+            font-size: 1.75rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h3 {
+            color: #2563eb;
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h4 {
+            color: #2563eb;
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        
+        .step {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-left: 4px solid #3b82f6;
+            background: #f8fafc;
+        }
+        
+        .info-block {
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .info-warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .info-info {
+            background-color: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+        }
+        
+        .info-success {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+        
+        .toc {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .toc h3 {
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+        
+        .toc a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        .btn {
+            background: #3b82f6;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background: #2563eb;
+        }
+        
+        code {
+            background: #f1f5f9;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        table th, table td {
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        table th {
+            background: #f8fafc;
+            font-weight: bold;
+        }
+        
+        @media print {
+            .no-print {
+                display: none;
+            }
+            
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-blue-600 mb-4">
+                <i class="fas fa-university mr-3"></i>
+                Инструкция для нового сотрудника
+            </h1>
+            <p class="text-xl text-gray-600">Ведение банковских операций и интеграция с 1С</p>
+            <p class="text-sm text-gray-500 mt-2">Версия 1.0 | Обновлено: 2024</p>
+        </header>
+
+        <div class="toc">
+            <h3><i class="fas fa-list mr-2"></i>Содержание</h3>
+            <ol class="list-decimal list-inside space-y-2">
+                <li><a href="#section1">Общие принципы ведения банковских операций</a></li>
+                <li><a href="#section2">Создание платежных поручений</a>
+                    <ul class="list-disc list-inside ml-6 mt-1 space-y-1">
+                        <li><a href="#section2-1">В системе 1С</a></li>
+                        <li><a href="#section2-2">В системах Клиент-Банк</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section3">Интеграция и обмен данными с 1С</a>
+                    <ul class="list-disc list-inside ml-6 mt-1 space-y-1">
+                        <li><a href="#section3-1">Настройка системы обмена</a></li>
+                        <li><a href="#section3-2">Выгрузка платежных документов</a></li>
+                        <li><a href="#section3-3">Загрузка банковских выписок</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section4">Разнесение банковских выписок</a>
+                    <ul class="list-disc list-inside ml-6 mt-1 space-y-1">
+                        <li><a href="#section4-1">Типовые операции</a></li>
+                        <li><a href="#section4-2">Счета учета</a></li>
+                        <li><a href="#section4-3">Автоматизация процесса</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section5">Создание реестра банковских операций</a></li>
+                <li><a href="#section6">Информирование отдела продаж</a></li>
+            </ol>
+        </div>
+
+        <section id="section1" class="section">
+            <h2><i class="fas fa-info-circle mr-2"></i>1. Общие принципы ведения банковских операций</h2>
+            
+            <div class="info-block info-info">
+                <strong><i class="fas fa-lightbulb mr-2"></i>Важно:</strong> Все банковские операции должны быть своевременно отражены в учете и соответствовать первичным документам.
+            </div>
+
+            <h3>Основные задачи</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>Своевременное создание и отправка платежных поручений</li>
+                <li>Контроль поступления средств от покупателей</li>
+                <li>Ведение взаиморасчетов с контрагентами</li>
+                <li>Информирование заинтересованных подразделений о движении средств</li>
+                <li>Подготовка отчетности по банковским операциям</li>
+            </ul>
+
+            <h3>Документооборот</h3>
+            <div class="step">
+                <strong>Шаг 1:</strong> Получение первичных документов (счета, договоры, акты)
+            </div>
+            <div class="step">
+                <strong>Шаг 2:</strong> Создание платежного поручения в 1С или банковской системе
+            </div>
+            <div class="step">
+                <strong>Шаг 3:</strong> Согласование и подписание документов
+            </div>
+            <div class="step">
+                <strong>Шаг 4:</strong> Отправка в банк для исполнения
+            </div>
+            <div class="step">
+                <strong>Шаг 5:</strong> Получение и обработка банковских выписок
+            </div>
+        </section>
+
+        <section id="section2" class="section">
+            <h2><i class="fas fa-file-invoice-dollar mr-2"></i>2. Создание платежных поручений</h2>
+
+            <div id="section2-1">
+                <h3>2.1 Создание платежных поручений в 1С</h3>
+                
+                <div class="step">
+                    <strong>Шаг 1:</strong> Перейдите в раздел "Банк и касса" → "Платежные поручения"
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 2:</strong> Нажмите кнопку "Создать" для создания нового документа
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 3:</strong> Заполните обязательные реквизиты:
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                        <li>Плательщик (ваша организация)</li>
+                        <li>Получатель (контрагент)</li>
+                        <li>Сумма платежа</li>
+                        <li>Назначение платежа</li>
+                        <li>Банковские реквизиты получателя</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 4:</strong> Проверьте корректность всех данных
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 5:</strong> Проведите документ и установите статус "Подготовлено"
+                </div>
+
+                <div class="info-block info-warning">
+                    <strong><i class="fas fa-exclamation-triangle mr-2"></i>Внимание:</strong> Обязательно проверяйте корректность банковских реквизитов получателя перед отправкой платежа.
+                </div>
+            </div>
+
+            <div id="section2-2">
+                <h3>2.2 Работа с системами Клиент-Банк</h3>
+                
+                <div class="step">
+                    <strong>Шаг 1:</strong> Войдите в систему Клиент-Банк вашего банка
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 2:</strong> Выберите раздел "Платежи" или "Платежные поручения"
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 3:</strong> Создайте новый платежный документ
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 4:</strong> При создании платежа в банковской системе заполните:
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                        <li>Счет списания</li>
+                        <li>Получатель и его реквизиты</li>
+                        <li>Сумма и валюта</li>
+                        <li>Назначение платежа</li>
+                        <li>Очередность платежа</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 5:</strong> Подпишите документ электронной подписью
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 6:</strong> Отправьте в банк на исполнение
+                </div>
+            </div>
+        </section>
+
+        <section id="section3" class="section">
+            <h2><i class="fas fa-sync-alt mr-2"></i>3. Интеграция и обмен данными с 1С</h2>
+
+            <div id="section3-1">
+                <h3>3.1 Настройка системы обмена с Клиент-Банком</h3>
+                
+                <div class="step">
+                    <strong>Шаг 1:</strong> В журнале "Платежные поручения" нажмите "Отправить в банк"
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 2:</strong> Перейдите в "Настройка" на вкладке "Отправка в банк"
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 3:</strong> Укажите параметры:
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                        <li>Банковский счет организации</li>
+                        <li>Программу клиент-банка</li>
+                        <li>Файл выгрузки в банк (по умолчанию: 1c_to_kl)</li>
+                        <li>Файл загрузки из банка (по умолчанию: kl_to_1c)</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 4:</strong> Настройте реквизиты по умолчанию:
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                        <li>Группа для новых контрагентов</li>
+                        <li>Статья доходов</li>
+                        <li>Статья расходов</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 5:</strong> Установите параметры выгрузки и загрузки:
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                        <li>Виды выгружаемых документов</li>
+                        <li>Контроль корректности номера документа</li>
+                        <li>Автоматическое создание новых элементов</li>
+                        <li>Автоматическое проведение документов</li>
+                    </ul>
+                </div>
+
+                <div class="info-block info-success">
+                    <strong><i class="fas fa-check-circle mr-2"></i>Рекомендация:</strong> Используйте сервис 1С:ДиректБанк для более современного и удобного обмена данными с банком.
+                </div>
+            </div>
+
+            <div id="section3-2">
+                <h3>3.2 Выгрузка платежных документов</h3>
+                
+                <div class="step">
+                    <strong>Шаг 1:</strong> Убедитесь, что у платежных поручений статус "Подготовлено" или "Согласовано"
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 2:</strong> Откройте форму "Клиент-банк" из журнала платежных поручений
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 3:</strong> На вкладке "Отправка в банк" отметьте документы для выгрузки
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 4:</strong> Нажмите "Выгрузить" для создания файла обмена
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 5:</strong> Загрузите созданный файл в программу Клиент-Банк
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 6:</strong> Проверьте загруженные документы и отправьте их в банк
+                </div>
+
+                <div class="info-block info-warning">
+                    <strong><i class="fas fa-shield-alt mr-2"></i>Безопасность:</strong> Если включен контроль безопасности, не закрывайте окно проверки до завершения загрузки в банк.
+                </div>
+            </div>
+
+            <div id="section3-3">
+                <h3>3.3 Загрузка банковских выписок</h3>
+                
+                <div class="step">
+                    <strong>Шаг 1:</strong> Выгрузите банковские выписки из программы Клиент-Банк
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 2:</strong> В 1С перейдите в журнал "Банковские выписки"
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 3:</strong> Нажмите кнопку "Загрузить"
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 4:</strong> Выберите файл выписки для загрузки
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 5:</strong> Проверьте корректность загруженных данных:
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                        <li>Контрагенты (отмечены серым, если будут созданы автоматически)</li>
+                        <li>Договоры (сверьте с назначением платежа)</li>
+                        <li>Суммы и даты операций</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 6:</strong> Отметьте выписки для загрузки и нажмите "Загрузить"
+                </div>
+            </div>
+        </section>
+
+        <section id="section4" class="section">
+            <h2><i class="fas fa-table mr-2"></i>4. Разнесение банковских выписок</h2>
+
+            <div id="section4-1">
+                <h3>4.1 Типовые операции по банковским выпискам</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Тип операции</th>
+                            <th>Дебет</th>
+                            <th>Кредит</th>
+                            <th>Примечание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Поступление от покупателя</td>
+                            <td>51</td>
+                            <td>62</td>
+                            <td>Оплата за товары/услуги</td>
+                        </tr>
+                        <tr>
+                            <td>Предоплата от покупателя</td>
+                            <td>51</td>
+                            <td>62</td>
+                            <td>Авансовые платежи</td>
+                        </tr>
+                        <tr>
+                            <td>Оплата поставщику</td>
+                            <td>60</td>
+                            <td>51</td>
+                            <td>Погашение задолженности</td>
+                        </tr>
+                        <tr>
+                            <td>Перечисление налогов</td>
+                            <td>68</td>
+                            <td>51</td>
+                            <td>Платежи в бюджет</td>
+                        </tr>
+                        <tr>
+                            <td>Социальные взносы</td>
+                            <td>69</td>
+                            <td>51</td>
+                            <td>Взносы в фонды</td>
+                        </tr>
+                        <tr>
+                            <td>Банковские комиссии</td>
+                            <td>91.2</td>
+                            <td>51</td>
+                            <td>Расходы по операциям</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="section4-2">
+                <h3>4.2 Алгоритм разнесения выписок</h3>
+                
+                <div class="step">
+                    <strong>Шаг 1:</strong> Откройте загруженную банковскую выписку
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 2:</strong> Проверьте автоматически определенные данные:
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                        <li>Контрагент</li>
+                        <li>Договор</li>
+                        <li>Статья движения ДС</li>
+                        <li>Аналитика</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 3:</strong> Скорректируйте данные при необходимости:
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                        <li>Выберите правильный договор</li>
+                        <li>Укажите корректную статью доходов/расходов</li>
+                        <li>Проверьте НДС</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 4:</strong> Для неопределенных операций создайте новые элементы справочников
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 5:</strong> Проведите документ и проверьте правильность проводок
+                </div>
+
+                <div class="info-block info-info">
+                    <strong><i class="fas fa-info-circle mr-2"></i>Важная информация:</strong> При автоматической загрузке система создает договор "Основной договор" для новых контрагентов.
+                </div>
+            </div>
+
+            <div id="section4-3">
+                <h3>4.3 Контроль правильности разнесения</h3>
+                
+                <div class="step">
+                    <strong>Шаг 1:</strong> Сверьте остатки по счету 51 с банковскими остатками
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 2:</strong> Проверьте правильность отражения в регистрах:
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                        <li>Взаиморасчеты с контрагентами</li>
+                        <li>Расчеты по налогам и сборам</li>
+                        <li>Движение денежных средств</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 3:</strong> Используйте отчет "Анализ субконто" для контроля
+                </div>
+                
+                <div class="step">
+                    <strong>Шаг 4:</strong> Исправьте выявленные ошибки через корректировочные документы
+                </div>
+            </div>
+        </section>
+
+        <section id="section5" class="section">
+            <h2><i class="fas fa-file-alt mr-2"></i>5. Создание реестра банковских операций для отдела продаж</h2>
+            
+            <div class="step">
+                <strong>Шаг 1:</strong> Определите период для формирования реестра (обычно месяц)
+            </div>
+            
+            <div class="step">
+                <strong>Шаг 2:</strong> Используйте стандартный отчет "Оборотно-сальдовая ведомость по счету 51"
+            </div>
+            
+            <div class="step">
+                <strong>Шаг 3:</strong> Настройте отбор по следующим критериям:
+                <ul class="list-disc list-inside ml-4 mt-2">
+                    <li>Период: выбранный месяц</li>
+                    <li>Счет: 51 (Расчетные счета)</li>
+                    <li>Субконто: Контрагенты</li>
+                    <li>Группировка: по контрагентам и операциям</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <strong>Шаг 4:</strong> Дополнительно создайте детализированный отчет:
+                <ul class="list-disc list-inside ml-4 mt-2">
+                    <li>Журнал документов "Поступление на расчетный счет"</li>
+                    <li>Отбор по дате и типу операции</li>
+                    <li>Группировка по контрагентам</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <strong>Шаг 5:</strong> Оформите реестр в следующем формате:
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Дата</th>
+                        <th>Контрагент</th>
+                        <th>Сумма поступления</th>
+                        <th>Назначение платежа</th>
+                        <th>Договор</th>
+                        <th>Примечание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>01.01.2024</td>
+                        <td>ООО "Покупатель 1"</td>
+                        <td>100 000,00</td>
+                        <td>Оплата по счету №123</td>
+                        <td>Договор №456</td>
+                        <td>Полная оплата</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>02.01.2024</td>
+                        <td>ИП Иванов И.И.</td>
+                        <td>50 000,00</td>
+                        <td>Предоплата</td>
+                        <td>Договор №789</td>
+                        <td>Аванс 50%</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="step">
+                <strong>Шаг 6:</strong> Добавьте итоговые суммы:
+                <ul class="list-disc list-inside ml-4 mt-2">
+                    <li>Общая сумма поступлений</li>
+                    <li>Количество операций</li>
+                    <li>Распределение по видам платежей</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <strong>Шаг 7:</strong> Передайте реестр в отдел продаж до 5 числа следующего месяца
+            </div>
+        </section>
+
+        <section id="section6" class="section">
+            <h2><i class="fas fa-bell mr-2"></i>6. Информирование отдела продаж</h2>
+            
+            <h3>6.1 Ежедневное информирование о поступлениях</h3>
+            
+            <div class="step">
+                <strong>Шаг 1:</strong> Ежедневно до 10:00 формируйте сводку поступлений за предыдущий день
+            </div>
+            
+            <div class="step">
+                <strong>Шаг 2:</strong> Используйте отчет "Движение денежных средств" с отбором:
+                <ul class="list-disc list-inside ml-4 mt-2">
+                    <li>Период: вчерашний день</li>
+                    <li>Тип операции: Поступление</li>
+                    <li>Детализация по контрагентам</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <strong>Шаг 3:</strong> Отправьте информацию по email с темой: "Поступления за [дата]"
+            </div>
+
+            <h3>6.2 Информирование об ошибочных платежах</h3>
+            
+            <div class="step">
+                <strong>Шаг 1:</strong> При обнаружении ошибочного платежа немедленно уведомите ОП
+            </div>
+            
+            <div class="step">
+                <strong>Шаг 2:</strong> Укажите в уведомлении:
+                <ul class="list-disc list-inside ml-4 mt-2">
+                    <li>Дату и сумму платежа</li>
+                    <li>Плательщика</li>
+                    <li>Назначение платежа</li>
+                    <li>Причину ошибки</li>
+                    <li>Предлагаемые действия</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <strong>Шаг 3:</strong> Согласуйте с ОП порядок возврата или зачета платежа
+            </div>
+
+            <h3>6.3 Возврат задолженностей покупателям</h3>
+            
+            <div class="step">
+                <strong>Шаг 1:</strong> Получите от ОП заявление на возврат с указанием:
+                <ul class="list-disc list-inside ml-4 mt-2">
+                    <li>Основания для возврата</li>
+                    <li>Суммы к возврату</li>
+                    <li>Реквизиты для перечисления</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <strong>Шаг 2:</strong> Проверьте правомочность возврата и наличие средств
+            </div>
+            
+            <div class="step">
+                <strong>Шаг 3:</strong> Создайте платежное поручение на возврат
+            </div>
+            
+            <div class="step">
+                <strong>Шаг 4:</strong> После исполнения платежа уведомите ОП о выполнении возврата
+            </div>
+
+            <h3>6.4 Регламент взаимодействия</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тип информации</th>
+                        <th>Периодичность</th>
+                        <th>Срок предоставления</th>
+                        <th>Способ передачи</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ежедневная сводка поступлений</td>
+                        <td>Ежедневно</td>
+                        <td>До 10:00</td>
+                        <td>Email</td>
+                    </tr>
+                    <tr>
+                        <td>Ошибочные платежи</td>
+                        <td>По факту</td>
+                        <td>Немедленно</td>
+                        <td>Телефон + Email</td>
+                    </tr>
+                    <tr>
+                        <td>Месячный реестр</td>
+                        <td>Ежемесячно</td>
+                        <td>До 5 числа</td>
+                        <td>Email + печатная форма</td>
+                    </tr>
+                    <tr>
+                        <td>Возвраты покупателям</td>
+                        <td>По заявлению ОП</td>
+                        <td>В течение 3 дней</td>
+                        <td>Уведомление о выполнении</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-block info-success">
+                <strong><i class="fas fa-check-circle mr-2"></i>Рекомендация:</strong> Ведите журнал уведомлений для контроля своевременности информирования отдела продаж.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><i class="fas fa-tools mr-2"></i>Полезные ссылки и инструменты</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div class="p-4 border rounded-lg">
+                    <h4 class="font-bold text-lg mb-2">
+                        <i class="fas fa-book mr-2"></i>Документация
+                    </h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Стандарты обмена 1С с банками</li>
+                        <li>Руководство пользователя 1С:Бухгалтерия</li>
+                        <li>Инструкции банков по системам ДБО</li>
+                    </ul>
+                </div>
+                
+                <div class="p-4 border rounded-lg">
+                    <h4 class="font-bold text-lg mb-2">
+                        <i class="fas fa-headset mr-2"></i>Поддержка
+                    </h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Техподдержка 1С</li>
+                        <li>Служба поддержки банка</li>
+                        <li>Внутренняя IT-поддержка</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-8 p-4 bg-gray-100 rounded-lg">
+            <p class="text-sm text-gray-600">
+                © 2024 Инструкция для нового сотрудника по ведению банковских операций
+            </p>
+            <p class="text-xs text-gray-500 mt-2">
+                При возникновении вопросов обращайтесь к непосредственному руководителю 
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
